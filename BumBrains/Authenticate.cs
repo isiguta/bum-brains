@@ -21,7 +21,7 @@ public class Authenticate
     {
         _logger.LogInformation("C# HTTP trigger function processed a request.");
 
-        await _httpClient.PostAsync("", req.Body);
+        //await _httpClient.PostAsync("", req.Body);
         var response = req.CreateResponse(HttpStatusCode.OK);
         response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
 
