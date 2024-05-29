@@ -29,4 +29,14 @@ public class PlaidCredentials
     /// 
     /// </summary>
     public string ItemId { get; set; } = string.Empty;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public string Products { get; set; } = string.Empty;
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public string CountryCodes { get; set; } = string.Empty;
 }
