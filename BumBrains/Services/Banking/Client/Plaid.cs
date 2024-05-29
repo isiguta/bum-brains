@@ -1,11 +1,12 @@
-﻿using BumBrains.Models.Configuration.Banking.Client;
+﻿using BumBrains.Models.Configuration.Banking.Plaid.Client;
+using Going.Plaid;
 using Microsoft.Extensions.Options;
 
 namespace BumBrains.Services.Banking.Client;
 
-public sealed class Plaid : BankingClient
+public sealed class Plaid : IBankingProvider
 {
-    public Plaid(IOptions<PlaidConfiguration> configuration)
+    public Plaid(PlaidClient client, IOptions<PlaidCredentials> configuration)
     {
 
     }

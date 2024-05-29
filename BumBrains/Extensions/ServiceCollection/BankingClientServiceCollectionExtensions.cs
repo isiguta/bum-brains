@@ -1,5 +1,6 @@
-﻿using BumBrains.Models.Configuration.Banking.Client;
+﻿using BumBrains.Models.Configuration.Banking.Plaid.Client;
 using BumBrains.Services.Banking.Client;
+using Going.Plaid;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,8 +10,10 @@ public static class BankingClientServiceCollectionExtensions
 {
     public static void AddBankingClient(this IServiceCollection services, IConfiguration configuration)
     {
-        var plaidConfiguration = configuration.GetSection(nameof(PlaidConfiguration)).Get<PlaidConfiguration>();
-        services.Configure<PlaidConfiguration>(configuration.GetSection(key: nameof(PlaidConfiguration)));
-        services.AddSingleton<Plaid>();
+        
+        configuration.GetSection(PlaidOptions.SectionKey).Get<PlaidCredentials>();
+        services.Configure<PlaidCredentials>(configuration.GetSection(key: PlaidOptions.SectionKey));
+        services.AddSingleton<PlaidClient>();
+        services.AddSingleton<IBankingProvider, Plaid>();
     }
 }
